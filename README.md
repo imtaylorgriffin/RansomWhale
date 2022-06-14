@@ -26,7 +26,19 @@ If you `cd /app/` again you may notice that there is a secret.key file that was 
 Next, use `python DecRansomWhale.py` to decrypt the files. After you can `cd ~` back to you home directory and `cat` a file, if everything was succesful, you should get the original output!
 
 ## Python Scripts   
-### EncRansomWhale  
+Both of the scripts make use of Cryptography, specifically Fernet, which can be found here: https://cryptography.io/en/latest/fernet/   
+They both contain comments throughout the code but I will explain a few of the key parts in greater detail.
+### EncRansomWhale.py 
+#### Generating the Key
+<p>
+    <img src="/githubStuff/enc keygen.png"  />
+</p>
+This is the unique key that we will utilize to Encrypt and Decrypt our victim's files. It uses Fernet's generate_key() method which can be found <a href="https://github.com/pyca/cryptography/blob/main/src/cryptography/fernet.py#L46-L48">Here</a> which we will then save as secret.key   
 
-### DecRansomWhale
+#### Encrypting the files
+<p>
+    <img src="/githubStuff/enc.png"  />
+</p>
+
+### DecRansomWhale.py
 
