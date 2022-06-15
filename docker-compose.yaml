@@ -1,0 +1,18 @@
+version: '3'
+
+services:
+
+  ransomwhale:
+    build: .
+    stdin_open: true
+    tty: true
+  
+  mailserver:
+    image: mailhog/mailhog:latest
+    restart: always
+    ports:
+      - 1025:1025
+      - 8025:8025
+
+
+      

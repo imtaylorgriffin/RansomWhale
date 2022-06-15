@@ -1,0 +1,4 @@
+added docker-compose functionality
+    now uses docker-compose commands
+added mailhog
+    still working on getting it to work better
