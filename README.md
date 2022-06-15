@@ -38,7 +38,20 @@ This is the unique key that we will utilize to Encrypt and Decrypt our victim's 
 #### Encrypting the files
 <p>
     <img src="/githubStuff/enc.png"  />
-</p>
+</p>    
+Now for the fun part, for encrypting we give it all of the files in our list, read their bytes, and pass them to Fernet's encrypt method found <a href="https://github.com/pyca/cryptography/blob/main/src/cryptography/fernet.py#L50-L51">Here</a>      
+
+I wanted to make this a little more fun, so I added my own file extension '.RansomWhale.mp4' to support this, I grabbed the filename and extension, removed the old file after reading and saving it's bytes to f_bytes_encrypted, and then wrote it's bytes to our new file encFile, which is the filename + custom extension.
 
 ### DecRansomWhale.py
+#### Opening the key
+<p>
+    <img src="/githubStuff/dec key.png"  />
+</p>
+Here is where we open the victim's key, read it in, and pass it to Fernet.
 
+#### Decrypting the files
+<p>
+    <img src="/githubStuff/dec.png"  />
+</p>
+For decrypting the files we read in the bytes of all the encrypted files in our list, pass them to Fernet's decrypt method which can be found <a href="https://github.com/pyca/cryptography/blob/main/src/cryptography/fernet.py#L82-L90">Here</a> then we'll replace the file's '.RansomWhale.mp4' extension with it's original extension, write the decrypted bytes to our file with the original extension, and delete our old encrypted file.
