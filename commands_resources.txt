@@ -5,6 +5,8 @@ docker container exec -it ransomwhale_ransomwhale_1 /bin/sh
 #### to reset the ransomwhale files if you want to encrypt/decrpyt again
 docker-compose build --no-cache
 
+
+###### MailHog ( https://mailtrap.io/blog/mailhog-explained/ ) ######
 mailhog inbox gui:  localhost:8025
 recieves mail on :1025
 ### Example win powershell Send-MailMessage (had to be all in one line for it to work)
