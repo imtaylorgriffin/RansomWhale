@@ -1,6 +1,0 @@
-#### wip docker-compose
-docker-compose up -d
-docker container exec -it ransomwhale_ransomwhale_1 /bin/sh
-
-#### to reset the ransomwhale files if you want to encrypt/decrpyt again
-docker-compose build --no-cache
