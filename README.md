@@ -5,12 +5,16 @@ Utilizing Docker and Python to look at the fundamentals of how an attacker may E
 `git clone https://github.com/imtaylorgriffin/RansomWhale.git`  
 To a directory of your choice.
 
+## Updates
+See debug/changelog.txt for things being added
+See commands_resources.txt to see different commands and additional info.
+
 ## Usage
 Move to the directory you cloned to, then:
 `cd RansomWhale`  
 At the moment we can use:   
-`docker build -t ransom .`  
-`docker run -i -t ransom /bin/sh`   
+`docker-compose up -d`  
+`docker container exec -it ransomwhale_ransomwhale_1 /bin/sh`   
 Once we're inside, we start at the /app directory. From there, you can `cd ~` to explore your home folder files.
 In the home folder, you can `cat` a few of the files to see their orignal text.
 
