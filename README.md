@@ -1,4 +1,4 @@
-# RansomWhale
+# <img src="/githubStuff/rw.png"  />
 Utilizing Docker and Python to look at the fundamentals of how an attacker may Encrypt and Decrypt files on a system.
 
 ## Installation
@@ -14,20 +14,27 @@ Move to the directory you cloned to, then:
 `cd RansomWhale`  
 At the moment we can use:   
 `docker-compose up -d`  
-`docker container exec -it ransomwhale_ransomwhale_1 /bin/sh`   
-Once we're inside, we start at the /app directory. From there, you can `cd ~` to explore your home folder files.
+and...  
+#### For the Attacker terminal:   
+It is important to go into the Attacker terminal first using:
+`docker container exec -it attacker /bin/sh`   
+The Attacker has a python script that will listen on port 5001 for incoming key information and write the file as `private_key.pem`. 
+You can start this script by using `python listener.py`
+#### For the Victim terminal: 
+`docker container exec -it victim /bin/sh`    
+The Victim has the ransomware, which will encrypt all files in their home directory with RSA, and secretly send the private key over to the Attacker.   
+Once we're inside the Victim terminal, we start at the ~/app directory. From there, you can `cd ~` to explore your home folder files.
 In the home folder, you can `cat` a few of the files to see their orignal text.
 
-After you finish exploring, you can `cd /app/` to get back to our Python scripts.   
-**EncRansomWhale.py** will encrypt all files on the user's home folder  
-**DecRansomWhale.py** will decrypt all of the encrypted files in the home folder.   
+After you finish exploring, you can `cd ~/app/` to get back to our Python scripts.   
+Use `python v2ransomPackage.py` to start the Ransomware.  
+On the Attacker terminal, you'll notice that we obtained our private_key! It's saved in the home folder as `private_key.pem`
 
-Use `python EncRansomWhale.py` to start the Ransomware.  
-After it finishes you can `cd ~` to go back to your home directory.   
+On the Victim terminal, After it finishes you can `cd ~` to go back to the home directory.   
 The first thing you may notice is that the Extensions have changed, which is a good sign for us (bad sign for the victim) that the files have been altered. If you `cat` a file of you choice, you will see that we are now given a line of text that does not make any sense, success!  
 
-If you `cd /app/` again you may notice that there is a secret.key file that was created from EncRansomWhale, **DecRansomWhale.py** makes use of this file to decrypt our victim's files.   
-Next, use `python DecRansomWhale.py` to decrypt the files. After you can `cd ~` back to you home directory and `cat` a file, if everything was succesful, you should get the original output!
+If you `cd ~/app/` again you may notice that there is a public_key.pem file that was created from our Ransomware, this was created from the private key to encrypt all of our files.    
+# vvvvvvvvvvvvvvvvvvvvv Work in progress, need to edit below vvvvvvvvvvvvvvvvvvvvvv
 
 ## Python Scripts   
 Both of the scripts make use of Cryptography, specifically Fernet, which can be found here: https://cryptography.io/en/latest/fernet/   
