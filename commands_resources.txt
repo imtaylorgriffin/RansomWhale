@@ -1,13 +1,12 @@
 #### wip docker-compose
 docker-compose up -d
-docker container exec -it ransomwhale_ransomwhale_1 /bin/sh
+#### victim docker
+docker container exec -it victim /bin/sh
+#### attacker docker
+docker container exec -it attacker /bin/sh
 
 #### to reset the ransomwhale files if you want to encrypt/decrpyt again
+docker-compose up -d --build --remove-orphans --force-recreate
+or 
 docker-compose build --no-cache
 
-
-###### MailHog ( https://mailtrap.io/blog/mailhog-explained/ ) ######
-mailhog inbox gui:  localhost:8025
-recieves mail on :1025
-### Example win powershell Send-MailMessage (had to be all in one line for it to work)
-PS C:\Users\taylo> Send-MailMessage -To "bobfakeperson@tcu.com" -From "yourfriendtaylor@test.com" -Subject "Let me help you out!" -BodyAsHtml "<p> Good morning Bob,</p> <p> My name is Taylor and I help small startup buisnesses, every buisness needs excellent communication to thrive.</p>  <p> We offer discounted Microsoft products to help the little guys, I have attached a demo Microsoft Word Application for you to try. </p> <br> <p>Thanks much,</p> <p> Taylor </p>" -Attachments C:\Users\taylo\Desktop\Test\RansomWhale\python-files\EncRansomWhale.py -Priority High -DeliveryNotificationOption OnSuccess, OnFailure -SmtpServer "localhost" -Port 1025

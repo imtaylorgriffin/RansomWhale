@@ -1,4 +1,12 @@
 added docker-compose functionality
     now uses docker-compose commands
+
 added mailhog
     still working on getting it to work better
+removed mailhog
+
+changed from asymmetric fernet encryption to symmetric rsa encryption.
+
+added socket sending and recieving
+
+ransomware encrypts and decrpyts as long as private key is with it

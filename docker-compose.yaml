@@ -1,18 +1,58 @@
 version: '3'
 
+###just adeded
+networks:
+  mynetwork:
+    ipam:
+      config:
+        - subnet: 192.168.3.0/24
+###
+
+
 services:
 
-  ransomwhale:
-    build: .
+  victim:
+    image: victim
+    container_name: victim
+    build: ./victim
     stdin_open: true
     tty: true
-  
-  mailserver:
-    image: mailhog/mailhog:latest
-    restart: always
+    volumes:
+      - ./email/attacker/sent:/home/victim/email/inbox
+      - ./email/victim/sent:/home/victim/email/sent
+    networks:
+      mynetwork:
+        ipv4_address: 192.168.3.4
     ports:
-      - 1025:1025
-      - 8025:8025
+      - "5001:5001"
+    depends_on:
+      - attacker
+  
+  attacker:
+    image: attacker
+    container_name: attacker
+    build: ./attacker
+    stdin_open: true
+    tty: true
+    volumes:
+      - ./email/victim/sent:/home/attacker/email/inbox
+      - ./email/attacker/sent:/home/attacker/email/sent
+    networks:
+      mynetwork:
+        ipv4_address: 192.168.3.3
+    ports:
+      - "5002:5001"
+  
+  nginx:
+    image: nginx:alpine
+    container_name: attacker_webServer
+    volumes:
+      - ./attacker/attacker_webServer/nginx.conf:/etc/nginx/nginx.conf
+    ports:
+      - "80:80"
+
+
+
 
 
       
