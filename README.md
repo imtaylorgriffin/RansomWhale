@@ -12,28 +12,38 @@ See commands_resources.txt to see different commands and additional info.
 ## Usage
 Move to the directory you cloned to, then:
 `cd RansomWhale`  
-At the moment we can use:   
-`docker-compose up -d`  
-and...  
-#### For the Attacker terminal:   
+We can use: `docker-compose up -d`  
+
+## 1. Encryption
+#### Attacker Terminal:   
 It is important to go into the Attacker terminal first using:
 `docker container exec -it attacker /bin/sh`   
 The Attacker has a python script that will listen on port 5001 for incoming key information and write the file as `private_key.pem`. 
 You can start this script by using `python listener.py`
-#### For the Victim terminal: 
+#### Victim Terminal: 
 `docker container exec -it victim /bin/sh`    
 The Victim has the ransomware, which will encrypt all files in their home directory with RSA, and secretly send the private key over to the Attacker.   
 Once we're inside the Victim terminal, we start at the ~/app directory. From there, you can `cd ~` to explore your home folder files.
 In the home folder, you can `cat` a few of the files to see their orignal text.
+I reccomend opening up the two terminals side by side. 
 
-After you finish exploring, you can `cd ~/app/` to get back to our Python scripts.   
-Use `python v2ransomPackage.py` to start the Ransomware.  
-On the Attacker terminal, you'll notice that we obtained our private_key! It's saved in the home folder as `private_key.pem`
+After you finish exploring, you can `cd ~/app/` to get back to the Ransomware.   
+Use `python v2ransomPackage.py` to start the Ransomware. It shows the files being encrypted and also a ransom note! 
+On the Attacker terminal, you'll notice that we obtained our private_key! It's saved in the attacker home folder as `private_key.pem`
 
-On the Victim terminal, After it finishes you can `cd ~` to go back to the home directory.   
+On the Victim terminal, After it finishes you can `ls` there is now a public_key.pem file that was created from our Ransomware, this was created from the private key to encrypt all of our files. `cd ~` to go back to the home directory.   
 The first thing you may notice is that the Extensions have changed, which is a good sign for us (bad sign for the victim) that the files have been altered. If you `cat` a file of you choice, you will see that we are now given a line of text that does not make any sense, success!  
 
-If you `cd ~/app/` again you may notice that there is a public_key.pem file that was created from our Ransomware, this was created from the private key to encrypt all of our files.    
+## 2. Email Simulation (work in progress)
+To simulate the paying and recieving part I have created a basic email simulation. You can `cd ~/email` on both the Attacker and Victim.
+On the Victim side: To make an email `vi email_i-paid-ransom` after you type it you can save it and do `sh send.sh` which will "send" it over to our Attacker's inbox
+On the Attacker side: The victim's email is in the inbox, to send the key, you can `mv ~/private_key.pem .` then `vi email_here-is-the-key` after typing the email_ file, you can send using sh send.sh  The key is in Victim's inbox/attachments.  
+
+## 3. Decryption
+To Decrypt, `mv email/inbox/attachments/private_key.pem app/.` and then `python v2ransomPackage.py` If successful, you should see Successfully Decrypted messages.
+
+
+     
 # vvvvvvvvvvvvvvvvvvvvv Work in progress, need to edit below vvvvvvvvvvvvvvvvvvvvvv
 
 ## Python Scripts   
