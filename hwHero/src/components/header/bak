@@ -1,0 +1,25 @@
+
+.container {
+    position: absolute;
+    background-image: url("./hero.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 600px;
+    width: 100%;
+    
+  }
+  button{
+  position: absolute;
+  padding: 10px;
+  background-color: rgba(0 , 0,0,0.3);
+  border-radius: 16px;
+  bottom: 5%;
+  left: 40%;
+  width: 80px;
+}
+
+button:hover {
+    background-color: blue;
+    color: white;
+}

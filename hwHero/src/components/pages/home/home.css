@@ -1,0 +1,29 @@
+.home{
+    display: flex;
+}
+
+
+
+::-webkit-scrollbar{
+    width: 20px;
+}
+
+::-webkit-scrollbar-track{
+    background-color: #4a4a4ad0;
+
+}
+
+::-webkit-scrollbar-thumb{
+    transition: 0.3s;
+    background-color: #D0F4FD;
+    border-radius: 20px;
+    border: 6px solid transparent;
+    background-clip: content-box;
+
+}
+
+::-webkit-scrollbar-thumb:hover{
+    transition: 0.3s;
+    background-color: #FEDE80;
+    
+}

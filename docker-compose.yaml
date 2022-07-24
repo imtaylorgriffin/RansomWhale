@@ -20,6 +20,7 @@ services:
     volumes:
       - ./email/attacker/sent:/home/victim/email/inbox
       - ./email/victim/sent:/home/victim/email/sent
+      - ./victim/Downloads:/home/victim/app
     networks:
       mynetwork:
         ipv4_address: 192.168.3.4
@@ -42,16 +43,23 @@ services:
         ipv4_address: 192.168.3.3
     ports:
       - "5002:5001"
+    depends_on:
+      - homework-hero
   
-  nginx:
-    image: nginx:alpine
-    container_name: attacker_webServer
-    volumes:
-      - ./attacker/attacker_webServer/nginx.conf:/etc/nginx/nginx.conf
+
+
+  homework-hero:
+    image: homework-hero
+  #  depends_on:
+  #      - vue-example
+    container_name: attacker_homework-hero
+    build:
+      target: development
+      context: ./hwHero
+   # volumes:
+   #   - ./src:/app/src
     ports:
-      - "80:80"
-
-
+      - 3000:3000
 
 
 

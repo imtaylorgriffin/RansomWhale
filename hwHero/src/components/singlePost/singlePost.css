@@ -1,0 +1,139 @@
+.singlePost{
+    flex: 9;
+}
+
+.singlePostWrapper{
+    margin-top: 50px;
+    padding: 20px;
+    padding: 0;
+
+}
+
+.singlePostTitle{
+    margin: 0 auto;
+    font-family: 'Akshar', sans-serif;
+    font-size: 48px;
+    text-align: center;
+}
+.singlePostHeading{
+    text-align: center;
+    font-family: 'Akshar', sans-serif;
+    font-size: 36px;
+
+    
+}
+
+
+.hwsc{
+    width: 500px;
+    height: 500px;
+    border-radius: 5px;
+    object-fit: scale-down;
+    margin-left: 575px;
+}
+
+
+
+.phish1{
+    max-width: 700px;
+    margin-left: 500px;
+    display: inline-block;
+    font-family: 'Akshar', sans-serif;
+    font-size: 24px;
+    line-height: 25px;
+}
+
+
+.reviews{
+    margin-top: 50px;
+    padding-top: 50px;
+    text-align: center;
+    background-color: #D0F4FD;
+    padding-bottom: 50px;
+}
+
+.inner{
+    max-width: 1200px;
+    margin: auto;
+    overflow: hidden;
+    padding: 0 20px;
+}
+
+
+
+.rows{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.cols{
+    flex: 33.33%;
+    max-width: 33.33%;
+    box-sizing: border-box;
+    padding: 15px;
+
+}
+
+
+.review{
+    transition: 0.3s;
+    background: #FEDE80;
+    padding: 20px;
+    border-radius: 15px;
+    font-size: 20px;
+}
+
+.review img{
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+}
+
+.readmore{
+    margin-top: 20px;
+    color: #959AA4;
+}
+
+.btnBox2{
+    margin-top: 50px;
+    transition: 0.3s;
+
+}
+.btnBox2:hover{
+    transition: 0.3s;
+}
+
+a.downloadButton2{
+    color: #D0F4FD;
+    background: #959AA4;
+    border-radius: 50px;
+    padding: 15px 45px;
+    margin-top: 800px;
+    text-decoration: none;
+    transition: 0.3s;
+    outline-style: solid;
+    outline-width: 5px;
+    outline-color: black;
+}
+
+a.downloadButton2:hover{
+    opacity: 1;
+    background: #FEDE80;
+    transition: 0.3s;
+    color: #DF1B11;
+    outline-width: 10px;
+    font-size: larger;
+    padding: 30px 60px;
+
+
+}
+
+.review:hover{
+    transition: 0.3s;
+    background: #DF1B11;
+    color: #D0F4FD;
+    padding: 40px;
+    font-size: 25px;
+}
+
