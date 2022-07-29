@@ -25,11 +25,12 @@ WORKDIR /home/victim/app
 COPY ./python-files /home/victim/app
 COPY ./misc-files /home/victim
 COPY ./send.sh /home/victim/email/send.sh
-COPY --from=tkotosz/mhsendmail:0.2.0 /usr/bin/mhsendmail /usr/local/bin/
+COPY ./pay.sh /home/victim/email/pay.sh
 
 # Creates a non-root user with an explicit UID and adds permission to access the /app folder
 
 RUN adduser -u 5678 --disabled-password --gecos "" victim && chown -R victim /home/victim 
+RUN chmod u+x /home/victim/email/pay.sh
 USER victim
 
 CMD ["/bin/sh"]
