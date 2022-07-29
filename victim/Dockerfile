@@ -30,7 +30,6 @@ COPY ./pay.sh /home/victim/email/pay.sh
 # Creates a non-root user with an explicit UID and adds permission to access the /app folder
 
 RUN adduser -u 5678 --disabled-password --gecos "" victim && chown -R victim /home/victim 
-RUN chmod u+x /home/victim/email/pay.sh
 USER victim
 
 CMD ["/bin/sh"]

