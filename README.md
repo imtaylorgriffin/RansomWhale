@@ -1,6 +1,8 @@
 # <img src="/githubStuff/rw.png"  />
 Utilizing Docker and Python to look at the fundamentals of how an attacker may Encrypt and Decrypt files on a system.
 
+# ReadMe under construction! Need to update with new directions!
+
 ## Installation
 `git clone https://github.com/imtaylorgriffin/RansomWhale.git`  
 To a directory of your choice.
