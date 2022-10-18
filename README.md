@@ -1,7 +1,7 @@
 # <img src="/githubStuff/rw.png"  />
 Utilizing Docker and Python to look at the fundamentals of how an attacker may Encrypt and Decrypt files on a system.
 
-# ReadMe under construction! Need to update with new directions!
+
 
 ## Installation
 `git clone https://github.com/imtaylorgriffin/RansomWhale.git`  
@@ -12,6 +12,7 @@ See debug/changelog.txt for things being added.
 See commands_resources.txt to see different commands and additional info.
 
 ## Usage
+### Please see [my pdf](/githubStuff/RansomWhale.pdf) for and updated walkthrough.
 Move to the directory you cloned to, then:
 `cd RansomWhale`  
 We can use: `docker-compose up -d`  
