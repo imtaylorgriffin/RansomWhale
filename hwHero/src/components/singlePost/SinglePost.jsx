@@ -47,7 +47,7 @@ export default function SinglePost() {
             </div>
             <h3>Download Today</h3>
             <div className="btnBox2">
-            <a href="https://tcu.box.com/s/bnucie4k2trjglkqzrygylzj5l6igcm5" className="downloadButton2" download>Download</a>
+            <a href="https://drive.google.com/uc?export=download&id=1zGqX8pILfMxbliFV258ZRs8fTPm6aAch" className="downloadButton2" download>Download</a>
 
           </div>
 

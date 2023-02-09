@@ -11,7 +11,7 @@ export default function Header() {
             
 
           <div className="btnBox">
-            <a href="https://tcu.box.com/s/bnucie4k2trjglkqzrygylzj5l6igcm5"  className="downloadButton" download>Download</a>
+            <a href="https://drive.google.com/uc?export=download&id=1zGqX8pILfMxbliFV258ZRs8fTPm6aAch"  className="downloadButton" download>Download</a>
 
           </div>  
 
