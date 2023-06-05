@@ -19,6 +19,11 @@ RUN pip install wheel
 ## required things
 RUN pip install fernet
 RUN pip install cryptography
+#vvvv just added 
+#RUN pip install shutil
+
+# Grant permissions to the /mnt directory for backup drive simulation
+RUN chmod 777 /mnt
 
 
 WORKDIR /home/victim/app

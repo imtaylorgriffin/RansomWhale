@@ -1,4 +1,4 @@
-#### wip docker-compose
+#### docker-compose
 docker-compose up -d
 #### victim docker
 docker container exec -it victim /bin/sh

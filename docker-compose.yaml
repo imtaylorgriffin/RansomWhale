@@ -21,6 +21,7 @@ services:
       - ./email/attacker/sent:/home/victim/email/inbox
       - ./email/victim/sent:/home/victim/email/sent
       - ./victim/Downloads:/home/victim/app
+      #- ./victim/Backup:/mnt/backupDrive
     networks:
       mynetwork:
         ipv4_address: 192.168.3.4
