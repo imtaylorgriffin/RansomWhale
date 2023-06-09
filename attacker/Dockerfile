@@ -14,9 +14,15 @@ WORKDIR /home/attacker
 COPY ./send.sh /home/attacker/email/send.sh
 COPY ./listener.py /home/attacker/
 
+
+
 # Creates a non-root user with an explicit UID and adds permission to access the /app folder
 
 RUN adduser -u 5678 --disabled-password --gecos "" attacker && chown -R attacker /home/attacker/
 USER attacker
+
+#6/9 update vvvvvvvv
+COPY ./attacker_files/* /home/attacker/
+######################
 
 CMD ["/bin/sh"]

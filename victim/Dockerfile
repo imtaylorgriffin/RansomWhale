@@ -26,8 +26,11 @@ RUN pip install cryptography
 RUN chmod 777 /mnt
 
 
-WORKDIR /home/victim/app
-COPY ./python-files /home/victim/app
+
+#WORKDIR /home/victim/app
+WORKDIR /home/victim
+COPY ./python-files /home/victim/Apps
+#COPY ./python-files /home/victim/Downloads
 COPY ./misc-files /home/victim
 COPY ./send.sh /home/victim/email/send.sh
 COPY ./pay.sh /home/victim/email/pay.sh
@@ -35,6 +38,8 @@ COPY ./pay.sh /home/victim/email/pay.sh
 # Creates a non-root user with an explicit UID and adds permission to access the /app folder
 RUN adduser -u 5678 --disabled-password --gecos "" victim && chown -R victim /home/victim 
 USER victim
+
+RUN mkdir -p /home/victim/Downloads
 
 
 

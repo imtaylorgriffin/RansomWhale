@@ -20,7 +20,8 @@ services:
     volumes:
       - ./email/attacker/sent:/home/victim/email/inbox
       - ./email/victim/sent:/home/victim/email/sent
-      - ./victim/Downloads:/home/victim/app
+      - ./victim/Downloads:/home/victim/Downloads
+      #- ./victim/Downloads:/home/victim/app
       #- ./victim/Backup:/mnt/backupDrive
     networks:
       mynetwork:
