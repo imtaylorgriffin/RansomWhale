@@ -1,46 +1,38 @@
 import os
 import shutil #archive files
+import argparse #add -r to "restore" files
 
 
+
+# command line args
+parser = argparse.ArgumentParser(description='Backup and restore app')
+parser.add_argument('-r', '--restore', action='store_true', help='Restore files')
+args = parser.parse_args()
     
 # grab the home directory
 home_dir = os.path.expanduser("~")
-print(home_dir)
 
 # simulate backing up to an external drive
 backup_dir = os.path.abspath("/mnt/myBackupDrive")
 
 
+# get command line args
+if args.restore:
+    home_dir, backup_dir = backup_dir, home_dir
+    print('Restoring files from backup')
+else:
+    print(f'backing up files')
+    
+    
 # if the backup directory doesn't exist, make the directory
 if not os.path.exists(backup_dir):
     os.makedirs(backup_dir)
-    print("Creating backup directory")
-
-for root, dirs, files in os.walk(home_dir):
-    # Skip subdirs, just want to show the idea
-    if root != home_dir:
-        continue
+    print("Mounting to backup drive")
     
+for file in os.listdir(home_dir):
+    file_path=os.path.join(home_dir, file)
+    if os.path.isfile(file_path):
+        shutil.copy2(file_path,backup_dir)
+        print(f'{file_path} {"restored" if args.restore else "backed up to"} {backup_dir}')   
     
-    for file in files:
         
-        file_path = os.path.join(root, file)
-        
-        relative_path = os.path.relpath(file_path,home_dir)
-        
-        bak_file_path = os.path.join(backup_dir,file)#relative_path)
-        bak_directory = os.path.dirname(bak_file_path)
-        
-        if not os.path.exists(bak_directory):
-            os.makedirs(bak_directory)
-        
-        
-        # shutil.copy2 copies the file and its contents but also tries to preserve the timestamps, file permissions, 
-        # and other file attributes as much as possible. Good for creating an exact copy of the file, including its metadata.
-        shutil.copy2(file_path,bak_file_path) 
-        ##
-        
-        
-        print(f"{file_path} backed up to {bak_file_path}")
-            
-            
