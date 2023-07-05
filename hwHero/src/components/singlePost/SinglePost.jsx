@@ -5,17 +5,18 @@ export default function SinglePost() {
     <div className="singlePost">
 
         <div className="singlePostWrapper">  
-            <h1 className="singlePostTitle">We Get It.</h1>
-            <h2 className="singlePostHeading">Math Homework can be <b>evil.</b></h2>
-            <img src="./hw.png" className="hwsc" alt="" />
-           
-
           <section className="phish1">
-            <p className="singlePostDesc">According to a new study from the Organization for Economic Co-operation and Development, OCED, <em>your hard math homework might not even be helping you.</em></p>
-            <p className="singlePostDesc2">Some of the best countries in the world <b>don't even have homework</b>. With our proprietry state of the art software, from the minds behind services like <b>Chegg</b>, let HomeworkHeroes SAVE YOU from YOUR VILLAINOUS MATH HOMEWORK!</p>
+              <p className="singlePostDesc">According to a new study from the Organization for Economic Co-operation and Development, OCED, your hard math homework <em>might not even be helping you.</em></p>
+              <p className="singlePostDesc2">Some of the best countries in the world <b>don't even have homework</b>. With our proprietry state of the art software, from the minds behind services like <b>Chegg</b>, let HomeworkHeroes SAVE YOU from YOUR VILLAINOUS MATH HOMEWORK!</p>
           </section>
-           
-          <div className="reviews">
+          <img src="./hw.png" className="hwsc" alt="" />
+            
+ 
+          
+
+        </div>
+
+        <div className="reviews">
             <div className="inner">
               <h1>See what Our Clients have to say</h1>
                 <div className="rows">
@@ -31,7 +32,7 @@ export default function SinglePost() {
                 <div className="cols">
                   <div className="review">
                       <img src="https://img.freepik.com/premium-vector/cute-robot-cartoon-vector-icon-illustration-techology-robot-icon-concept-isolated-premium-vector-flat-cartoon-style_138676-1474.jpg" alt="" />
-                      <p>The HomeworkHeroes program solved my Calculus 2 problem, it helped me step by step...</p>
+                      <p>HomeworkHeroes solved my Calculus 2 problem, it helped me step by step to figure out...</p>
                       <div className="readmore">Read More</div>
                     </div>
                   </div>
@@ -45,15 +46,14 @@ export default function SinglePost() {
               </div>
               
             </div>
-            <h3>Download Today</h3>
-            <div className="btnBox2">
-            <a href="https://rb.gy/jjzdg" className="downloadButton2" download>Download</a>
+            <div className="footer">
+              <h3>Download Today</h3>
+              <div className="btnBox2">
+                <a href="https://rb.gy/jjzdg" className="downloadButton2" download>Download</a>
+              </div>
+            </div>
 
           </div>
-
-          </div>
-
-        </div>
 
     </div>
   )

@@ -52,14 +52,9 @@ services:
 
   homework-hero:
     image: homework-hero
-  #  depends_on:
-  #      - vue-example
     container_name: attacker_homework-hero
     build:
-      target: development
       context: ./hwHero
-   # volumes:
-   #   - ./src:/app/src
     ports:
       - 3000:3000
 

@@ -1,45 +1,81 @@
-.header{
-    margin-top: -80px;
-}
+/* header.css */
 
-
-#hero{
-    width: auto;
-    height: 805px;
-    background: url(./hero.jpg);
+/* Header Container */
+.header {
+    background: url(./hero.png);
+    padding: 5rem;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    padding-top: 32px;
+    height: 40vw;
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Add this line to horizontally center the content */
+    flex-direction: column;
+    text-align: center;
+}
+
+/* Hero Section */
+#hero {
+    width: 100%; /* Add this line to make #hero section take up the full width */
+}
+
+/* Header Text */
+.headerItems {
+    color: #D0F4FD;
+}
+
+
+.title {
     
+    font-size: 6vw;
+    font-weight: bold;
+    color: #FEDF81;
+    text-shadow: 
+    -2px -2px 0 black,
+    2px -2px 0 black,
+    -2px 2px 0 black,
+    2px 2px 0 black;
 }
 
+.info {
+    font-size: 4vw;
+    text-shadow: 
+    -2px -2px 0 black,
+    2px -2px 0 black,
+    -2px 2px 0 black,
+    2px 2px 0 black;
+}
+.infoBold{
+    color: #D41C25;
+}
+
+/* Hero Box */
 .container{
-    max-width: 1140px;
-    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: auto;
+}
+.heroBox {
+    width: auto;
+}
+  
+/* Button Box */
+.btnBox {
+    margin-top: 1vw; /* Adjust the margin-top as needed */
 
 }
+  
+.downloadButton {
 
-
-.btnBox{
-    margin-top: 530px;
-    transition: 0.3s;
-
-}
-.btnBox:hover{
-    margin-top: 540px;
-    transition: 0.3s;
-
-}
-
-a.downloadButton{
+    display: inline-block;
+    padding: 1vw 2vw;
+    font-weight: bold;
     color: #000000;
     background: #D0F4FD;
-    top: 450px;
-    margin-left: 560px;
     border-radius: 50px;
-    padding: 15px 45px;
-    margin-top: 800px;
     text-decoration: none;
     transition: 0.3s;
     outline-style: solid;
@@ -47,7 +83,7 @@ a.downloadButton{
     outline-color: black;
 }
 
-a.downloadButton:hover{
+.downloadButton:hover {
     opacity: 1;
     background: #FEDE80;
     transition: 0.3s;
@@ -55,9 +91,48 @@ a.downloadButton:hover{
     outline-width: 10px;
     font-size: larger;
     padding: 30px 60px;
-    margin-top: 100px;
-    margin-left: 545px;
-
+    
 }
 
 
+
+
+.top{
+    overflow: hidden;
+}
+
+.topListItem {
+    display: inline-block;
+    text-decoration: none;
+    transition: 0.3s;
+
+    
+}
+
+.topListItem:hover {
+    background: #FEDE80;
+    transition: 0.3s;
+    color: #DF1B11;
+    font-size: larger;
+    padding-top: 1.5vw;
+    padding-left: .5vw;
+    padding-right: .5vw;
+}
+
+.contact{
+    display: inline-block;
+    text-decoration: none;
+    transition: 0.3s;
+}
+.contact:hover{
+    background: #FEDE80;
+    transition: 0.3s;
+    color: #DF1B11;
+    font-size: larger;
+    padding-top: 1.5vw;
+    padding-left: .5vw;
+    padding-right: .5vw;
+}
+  
+
+  

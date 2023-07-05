@@ -1,59 +1,92 @@
 .singlePost{
     flex: 9;
-}
-
-.singlePostWrapper{
-    margin-top: 50px;
-    padding: 20px;
-    padding: 0;
-
-}
-
-.singlePostTitle{
-    margin: 0 auto;
-    font-family: 'Akshar', sans-serif;
-    font-size: 48px;
-    text-align: center;
-}
-.singlePostHeading{
-    text-align: center;
-    font-family: 'Akshar', sans-serif;
-    font-size: 36px;
-
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     
 }
 
 
+.singlePostWrapper{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 5vw;
+    padding-bottom: 5vw;
+
+}
+
+
+
 .hwsc{
-    width: 500px;
-    height: 500px;
-    border-radius: 5px;
+    width: 30vw;
+    height: 30vw;
+    border-radius: 5vw;
     object-fit: scale-down;
-    margin-left: 575px;
+    
 }
 
 
 
 .phish1{
-    max-width: 700px;
-    margin-left: 500px;
+    max-width: 40vw;
     display: inline-block;
     font-family: 'Akshar', sans-serif;
-    font-size: 24px;
-    line-height: 25px;
+    font-size: 2vw;
+    line-height: 2.5vw;
 }
+
+
+
 
 
 .reviews{
-    margin-top: 50px;
-    padding-top: 50px;
+    padding-top: 5vw;
     text-align: center;
     background-color: #D0F4FD;
-    padding-bottom: 50px;
+    padding-bottom: 5vw;
+    
+
 }
 
+.review{
+    transition: 0.3s;
+    background: #FEDE80;
+    padding: 20px;
+    border-radius: 15px;
+    font-size: 2vw;
+    height: 25vw;
+    font-size: 1.5vw;
+    overflow: hidden;
+    
+    
+    
+}
+
+.review p{
+    margin-bottom: .5vw;
+    margin-top: 1vw;
+    max-height: 6vw;
+}
+
+
+.review img{
+    width: 10vw;
+    height: 10vw;
+    border-radius: 50%;
+}
+
+.readmore{
+    margin-top: 2vw;
+    color: #959AA4;
+    margin-bottom: auto;
+}
+
+
 .inner{
-    max-width: 1200px;
+    width: 100%;
     margin: auto;
     overflow: hidden;
     padding: 0 20px;
@@ -71,53 +104,35 @@
     flex: 33.33%;
     max-width: 33.33%;
     box-sizing: border-box;
-    padding: 15px;
+    padding: .5vw;
 
 }
 
 
-.review{
-    transition: 0.3s;
-    background: #FEDE80;
-    padding: 20px;
-    border-radius: 15px;
-    font-size: 20px;
+.footer h3 {
+    margin-top: 1vw;
+    margin-bottom: 1vw;
 }
-
-.review img{
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
+  
+.btnBox2 {
+    margin-top: 1vw;
+    display: flex;
+    justify-content: center; /* Added this line to center the button */
 }
-
-.readmore{
-    margin-top: 20px;
-    color: #959AA4;
-}
-
-.btnBox2{
-    margin-top: 50px;
-    transition: 0.3s;
-
-}
-.btnBox2:hover{
-    transition: 0.3s;
-}
-
-a.downloadButton2{
+  
+.downloadButton2 {
     color: #D0F4FD;
     background: #959AA4;
     border-radius: 50px;
     padding: 15px 45px;
-    margin-top: 800px;
     text-decoration: none;
     transition: 0.3s;
     outline-style: solid;
     outline-width: 5px;
     outline-color: black;
 }
-
-a.downloadButton2:hover{
+  
+.downloadButton2:hover {
     opacity: 1;
     background: #FEDE80;
     transition: 0.3s;
@@ -125,15 +140,12 @@ a.downloadButton2:hover{
     outline-width: 10px;
     font-size: larger;
     padding: 30px 60px;
-
-
 }
 
 .review:hover{
     transition: 0.3s;
     background: #DF1B11;
     color: #D0F4FD;
-    padding: 40px;
-    font-size: 25px;
+    
 }
 

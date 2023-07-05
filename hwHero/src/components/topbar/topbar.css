@@ -1,21 +1,21 @@
 .top{
-    height: 80px;
+    height: 4vw;
     width: 100%;
-    background-color: #4a4a4ad0;
-    position: sticky;
+    position: relative;
     top: 0;
     display: flex;
     align-items: center;
     font-family: 'Akshar', sans-serif;
     z-index: 500;
-    box-shadow: 0px 0px 10px #4f4e4e;
+    box-shadow: 0px 0px 20px #232323;
+    font-size: 1.5vw;
+    
     
     
 }
 
 .topLeft{
-    height: 200px;
-    width: 200px;
+    
     flex: 3;
     display: flex;
     align-items: center;
@@ -23,12 +23,11 @@
 }
 
 .logo{
-    height: 100px;
-    width: 400px;
-    position: sticky; /* look into changing*/
+    height: 100%;
+    width: auto;
+    position: absolute; /* look into changing*/
     
 }
-
 
 
 .topRight{
@@ -39,40 +38,28 @@
 
 }
 
-.topIcon{
-    font-size: 20px;
-    margin-right: 10px;
-    color: whitesmoke;
-    cursor: pointer;
-}
-
 .topCenter{
     flex: 6;
 }
 
-.topImg{
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    object-fit: cover;
-}
 
-.topList{
+
+.topList {
     display: flex;
     justify-content: center;
     margin: 0;
     padding: 0;
     list-style: none;
-
-}
-
-.topListItem{
-    margin-right: 20px;
-    font-size: 18px;
+  }
+  
+  .topListItem {
     font-weight: 300;
     cursor: pointer;
-    color: whitesmoke;
-}
+    text-decoration: none;
+    color: #232323;
+    margin-right: 20px;
+  }
+
 
 
 .contact{
@@ -84,11 +71,8 @@
 }
 
 .contactButton{
-    margin-right: 20px;
-    font-size: 18px;
     font-weight: 300;
     cursor: pointer;
-    color: whitesmoke;
 }
 
 .link{
