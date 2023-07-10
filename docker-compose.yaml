@@ -1,12 +1,11 @@
 version: '3'
 
-###just adeded
 networks:
   mynetwork:
     ipam:
       config:
         - subnet: 192.168.3.0/24
-###
+
 
 
 services:
@@ -21,8 +20,6 @@ services:
       - ./email/attacker/sent:/home/victim/email/inbox
       - ./email/victim/sent:/home/victim/email/sent
       - ./victim/Downloads:/home/victim/Downloads
-      #- ./victim/Downloads:/home/victim/app
-      #- ./victim/Backup:/mnt/backupDrive
     networks:
       mynetwork:
         ipv4_address: 192.168.3.4

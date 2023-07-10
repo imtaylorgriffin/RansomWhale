@@ -12,7 +12,7 @@ RUN pip3 install --no-cache --upgrade pip setuptools
 
 WORKDIR /home/attacker
 COPY ./send.sh /home/attacker/email/send.sh
-COPY ./listener.py /home/attacker/
+#COPY ./listener.py /home/attacker/
 
 
 
