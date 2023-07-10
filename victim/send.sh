@@ -1,2 +1,2 @@
 #!/bin/bash
-mv ./email* ./sent/
+mv ./email* ./sent/email_payment
